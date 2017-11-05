@@ -19,7 +19,7 @@ class RadixTree:
                     found = True
                     if a[0] != b:
                         x.children[a[0]] = RadixNode(a[0])
-                        x.children[a[0]].children[b[len(a):]] = x.children[b]
+                        x.children[a[0]].children[b[len(a[0]):]] = x.children[b]
                         if a[1][len(a[0]):] != '':
                             x.children[a[0]].children[a[1][len(a[0]):]] = RadixNode(a[1][len(a[0]):])
                         del x.children[b]
@@ -47,7 +47,9 @@ def main():
     R.insert(R.root, 'wow')
     R.insert(R.root, 'wonderful')
     print(R.root.children)
+    print(R.root.children['h'].children['e'].children)
     print(R.root.children['tail'].children['or'].children)
+    print(R.root.children['wo'].children)
 
 if __name__ == '__main__':
     main()
