@@ -25,6 +25,7 @@ class RadixTree:
                         x.children[a[0]].children[b[len(a[0]):]].key = b[len(a[0]):]
                         if a[1][len(a[0]):] != '':
                             x.children[a[0]].children[a[1][len(a[0]):]] = RadixNode(a[1][len(a[0]):])
+                            x.children[a[0]].children[a[1][len(a[0]):]].isLeaf = True
                         else:
                             x.children[a[0]].isLeaf = True
                         del x.children[b]
@@ -41,6 +42,12 @@ class RadixTree:
             if a[0] in x.children.keys():
                 return self.search(x.children[a[0]], k[len(a[0]):])
         return False
+
+    def printTree(self, x, string):
+        for a in sorted(x.children.keys()):
+            if x.children[a].isLeaf:
+                print(string + a)
+            self.printTree(x.children[a], string + a)
 
 def getAllStrings(string):
     for a in range(len(string), 0, -1):

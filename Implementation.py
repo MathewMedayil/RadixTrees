@@ -22,6 +22,7 @@ def main():
     print(R.search(R.root, "he"))
     print(R.search(R.root, "tail"))
     print(R.search(R.root, "tailored"))
+    R.printTree(R.root, "")
 
 if __name__ == '__main__':
     main()
