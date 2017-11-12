@@ -2,16 +2,9 @@ from Radix import *
 
 def main():
     R = RadixTree()
-    R.insert(R.root, 'hey')
-    R.insert(R.root, 'hello')
-    R.insert(R.root, 'hi')
-    R.insert(R.root, 'tailor')
-    R.insert(R.root, 'tailored')
-    R.insert(R.root, 'tail')
-    R.insert(R.root, 'tailoring')
-    R.insert(R.root, 'wow')
-    R.insert(R.root, 'wonderful')
-    R.insert(R.root, 'he')
+    names=['hey','wow','hi','tailor','tailored','tail','tailoreing','he','wonderful','hello']
+    for name in names:
+        R.insert(R.root,name)
     print(R.root.children)
     print(R.root.children['h'].children['e'].children)
     print(R.root.children['tail'].children)
@@ -22,7 +15,7 @@ def main():
     print(R.search(R.root, "he"))
     print(R.search(R.root, "tail"))
     print(R.search(R.root, "tailored"))
-    R.printTree(R.root, "")
+    print(R.printTree(names,0))
 
 if __name__ == '__main__':
     main()
