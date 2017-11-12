@@ -16,6 +16,9 @@ def main():
     print(R.search(R.root, "tail"))
     print(R.search(R.root, "tailored"))
     print(R.printTree(names,0))
+    R.spellchecker()
+
+    
 
 if __name__ == '__main__':
     main()
