@@ -73,17 +73,25 @@ class RadixTree:
                 return self.search(x.children[a[0]], k[len(a[0]):])
         return False
 
-    def printTree(self, x, string):
+    def printTree(self,L,i):
         """
         Print the complete sorted tree
-        :param x: node at which leaves are searched for
-        :param string: contains the string that is formed by parent nodes of x
-        :return: None
+        :param L: list of keys inserted in the tree
+        :param i: position of the string
+        :return: List
         """
-        for a in sorted(x.children.keys()):
-            if x.children[a].isLeaf:
-                print(string + a)
-            self.printTree(x.children[a], string + a)
+        if len(L) <= 1:
+            return L
+        final = []
+        buckets = [ [] for x in range(27) ] # one for each letter in a-z
+        for s in L:
+            if i >= len(s):
+                final.append(s)
+            else:
+                buckets[ ord(s[i]) - ord('a') ].append(s)
+        buckets = [ self.printTree(b, i + 1) for b in buckets ]
+        return final + [ b for blist in buckets for b in blist ]
+        
 
 def getAllStrings(string):
     """
