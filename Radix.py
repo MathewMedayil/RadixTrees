@@ -27,7 +27,7 @@ class RadixTree:
         """
         Initialize a Radix Tree
         """
-        self.root = RadixNode() # assign null node to root
+        self.root = RadixNode() 
 
     def insert(self, x, k):
         """
@@ -91,6 +91,19 @@ class RadixTree:
                 buckets[ ord(s[i]) - ord('a') ].append(s)
         buckets = [ self.printTree(b, i + 1) for b in buckets ]
         return final + [ b for blist in buckets for b in blist ]
+
+    def spellchecker(self):
+        f=open('small.dict')
+        words=f.readlines()
+        words=[line[:-1] for line in words]
+        for a in words:
+            self.insert(self.root,a)
+        w=input("Enter a word to check its validity")
+        if self.search(self.root,w):
+            print("Entered word is valid")
+        else:
+            print("Incorrect spelling")
+        
         
 
 def getAllStrings(string):
