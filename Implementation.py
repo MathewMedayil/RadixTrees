@@ -16,9 +16,19 @@ def main():
     print(R.search(R.root, "tail"))
     print(R.search(R.root, "tailored"))
     print(R.printTree(names,0))
-    R.spellchecker()
+    f=open('small.txt')
+    words=f.readlines()
+    words=[line[:-1] for line in words]
+    for a in words:
+        R.insert(R.root,a)
+    w=input("Enter a word to check its validity: ")
+    if R.search(R.root,w):
+        print("Correct spelling")
+    else:
+        print("Incorrect spelling")
 
     
 
 if __name__ == '__main__':
     main()
+
