@@ -92,20 +92,6 @@ class RadixTree:
         buckets = [ self.printTree(b, i + 1) for b in buckets ]
         return final + [ b for blist in buckets for b in blist ]
 
-    def spellchecker(self):
-        f=open('small.dict')
-        words=f.readlines()
-        words=[line[:-1] for line in words]
-        for a in words:
-            self.insert(self.root,a)
-        w=input("Enter a word to check its validity")
-        if self.search(self.root,w):
-            print("Entered word is valid")
-        else:
-            print("Incorrect spelling")
-        
-        
-
 def getAllStrings(string):
     """
     Yield all string instances from index 0, decreasing string length by 1 at each iteration
