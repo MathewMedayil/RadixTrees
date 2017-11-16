@@ -9,6 +9,12 @@ This project implements Radix Trees and performs complete analysis for `insert` 
 
 [insertimage]:https://github.com/utkarsh23/RadixTrees/blob/master/analysis/insert.png
 
+`search` function for the 3 data structures
+
+![search][searchimage]
+
+[searchimage]:https://github.com/utkarsh23/RadixTrees/blob/master/analysis/search.png
+
 ## Group Members
 * [Jahnavi](https://github.com/Jahnavi-Tirunagari)
 * [Mathew](https://github.com/MathewMedayil)
