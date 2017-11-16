@@ -31,7 +31,7 @@ def main():
 	plt.xticks(builds)
 	plt.xlabel('Length of words')
 	plt.ylabel('Time taken (seconds)')
-	plt.title('Number of Words Vs. Time Taken')
+	plt.title('Length of words Vs. Time Taken')
 
 	handles, labels = ax1.get_legend_handles_labels()
 	lgd = ax1.legend(handles, labels, loc='upper center', bbox_to_anchor=(0.2,0.98))
