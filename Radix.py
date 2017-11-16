@@ -86,32 +86,6 @@ class RadixTree:
                 print(string + a)
             self.print_tree(x.children[a], string + a)
 
-    def get_last_node(self, x, k):
-        """
-        Returns the last node at which a string terminates
-        :param x: node at which specified string is to be searched for
-        :param k: string which is to be searched for at the node
-        :return: RadixNode
-        """
-        if k == '':
-            return x
-        for a in getAllStrings(k):
-            if a[0] in x.children.keys():
-                return self.get_last_node(x.children[a[0]], k[len(a[0]):])
-        return None
-
-    def print_suggestions(self, string):
-        """
-        Prints all possible words that can be made out of a string
-        :param string: the string whose suggestions are to be found
-        :return: None
-        """
-        node = self.get_last_node(self.root, string)
-        if node:
-            self.print_tree(node, string)
-        else:
-            print("Not a valid string for suggestions")
-
     def spell_checker(self, string):
         """
         Checks is a string exists in the tree
@@ -132,20 +106,24 @@ def getAllStrings(string):
 
 
 def main():
+    print("Tree 1:")
     R = RadixTree()
-    f = open('small.dict')
+    f = open('word_list/words_44k.txt')
     words = f.readlines()
     words = [line[:-1] for line in words]
     for a in words:
         R.insert(R.root, a)
-    print(R.root.children["p"].children["r"].children["o"].children)
-    R.print_suggestions("prq")
-    R.print_suggestions("prob")
-    w = input("Enter a word to check its validity: ")
-    if R.search(R.root, w):
+    word = input("Enter a word to check its validity: ")
+    if R.spell_checker(word):
         print("Correct spelling")
     else:
         print("Incorrect spelling")
+    print("Tree 2:")
+    R2 = RadixTree()
+    words = ["hey", "hi", "hello", "tailoring", "tailor", "tailoring"]
+    for word in words:
+        R2.insert(R2.root, word)
+    R2.print_tree(R2.root, "")
 
 
 if __name__ == '__main__':
